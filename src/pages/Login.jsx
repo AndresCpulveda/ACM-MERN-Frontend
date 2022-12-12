@@ -1,5 +1,5 @@
 import React from 'react'
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 function Login() {
   return (
@@ -24,9 +24,9 @@ function Login() {
             className='bg-orange-500 border-2 border-orange-500 w-full mt-6 py-1 font-bold rounded text-white uppercase cursor-pointer hover:bg-white hover:text-orange-500 transition-all' 
           ></input>
         </form>
-        <nav className='flex justify-between mt-8 mb-2'>
+        <nav className='flex flex-col md:flex-row justify-between mt-8 mb-2'>
           <p className='text-gray-400 text-sm'>Si aun no tienes una cuenta <Link className='text-gray-500 hover:text-gray-600 font-bold transition-all'>Registrate aquí</Link></p>
-          <Link className='text-gray-400 text-sm hover:text-gray-600 transition-all'>Olvidé mi contraseña</Link>
+          <Link className='text-gray-400 mt-4 md:mt-0 text-sm hover:text-gray-600 transition-all'>Olvidé mi contraseña</Link>
         </nav>
       </div>
     </>
