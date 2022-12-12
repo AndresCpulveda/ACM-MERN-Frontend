@@ -1,11 +1,19 @@
+import {BrowserRouter, Route, Routes} from 'react-router-dom'
 
+import AuthLayout from './layouts/AuthLayout'
+import Login from './pages/Login'
 
 function App() {
-
   return (
-    <div className="App">
-      <h1 className="text-indigo-500">Vite + React</h1>
-    </div>
+    <>
+      <BrowserRouter>
+        <Routes>
+          <Route path='/' element={<AuthLayout />}>
+            <Route index element={<Login />}/>
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </>
   )
 }
 
