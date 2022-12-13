@@ -2,37 +2,61 @@ import {useState} from 'react'
 import { Link } from 'react-router-dom'
 
 import Alert from '../components/Alert'
+import sendAxios from '../../config/sendAxios'
 
 function Register() {
 
   const [inputs, setInputs] = useState({})
   const [alert, setAlert] = useState({})
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault()
 
     if(Object.values(inputs).includes('') || Object.values(inputs).length === 0){
-      setAlert({
-        msg: 'Llena todos los campos',
-        error: true,
-      })
+      setAlert({msg: 'Llena todos los campos',error: true,})
+
       setTimeout(() => {
         setAlert({})
       }, 3000);
       return
     }
     if(inputs.password !== inputs.passwordRepeat) {
-      setAlert({
-        msg: 'Las contraseñas no coinciden',
-        error: true,
-      })
+      setAlert({msg: 'Las contraseñas no coinciden', error: true,})
+
+      setTimeout(() => {
+        setAlert({})
+      }, 3000);
+      return
+    }
+    if(inputs.password.length < 6) {
+      setAlert({msg: 'Elige una contraseña de 6 digitos minimo', error: true,})
+  
       setTimeout(() => {
         setAlert({})
       }, 3000);
       return
     }
 
-    
+    const request = {
+      email: inputs.email,
+      name: inputs.name,
+      password: inputs.password,
+    }
+
+    try {
+      await sendAxios.post('/administrators/register', request)
+      setAlert({msg: 'Usuario creado, email de confirmación enviado'})
+      setTimeout(() => {
+        setAlert({})
+      }, 5000);
+    } catch (error) {
+      setAlert({msg: error.response.data, error: true})
+      setTimeout(() => {
+        setAlert({})
+      }, 3000);
+
+    }
+
   }
 
   return (
@@ -45,8 +69,8 @@ function Register() {
           <div className='flex flex-col gap-2'>
             <label className='text-lime-900 font-bold text-lg'>Nombre</label>
             <input
-              name='nombre'
-              value={inputs.nombre || ''}
+              name='name'
+              value={inputs.name || ''}
               onChange={e => setInputs({
                 ...inputs,
                 [e.target.name] : e.target.value
