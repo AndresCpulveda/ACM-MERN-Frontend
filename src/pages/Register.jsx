@@ -44,7 +44,7 @@ function Register() {
     }
 
     try {
-      await sendAxios.post('/administrators/register', request)
+      await sendAxios.post('administrators/register', request)
       setAlert({msg: 'Usuario creado, email de confirmación enviado'})
       setTimeout(() => {
         setAlert({})
@@ -63,7 +63,7 @@ function Register() {
     <>
       <div>Administra tus Clientes</div>
       <div className='shadow-lg bg-white p-8 rounded-lg'>
-        <h1 className='text-3xl uppercase text-center mb-8 text-lime-700 font-black'>Registrate</h1>
+        <h1 className='text-3xl uppercase text-center mb-8 text-lime-700 font-black'>Registro</h1>
 
         <form onSubmit={handleSubmit}>
           <div className='flex flex-col gap-2'>
