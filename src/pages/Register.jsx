@@ -5,8 +5,8 @@ function Register() {
   return (
     <>
       <div>Administra tus Clientes</div>
-      <div className='shadow-lg bg-white p-8'>
-        <h1 className='text-4xl uppercase text-center mb-8 text-lime-700 font-bold'>Registrate</h1>
+      <div className='shadow-lg bg-white p-8 rounded-lg'>
+        <h1 className='text-3xl uppercase text-center mb-8 text-lime-700 font-black'>Registrate</h1>
         <form>
           <div className='flex flex-col gap-2'>
             <label className='text-lime-900 font-bold text-lg'>Email</label>
@@ -38,8 +38,8 @@ function Register() {
           ></input>
         </form>
         <nav className='flex justify-between mt-8'>
-          <p className='text-gray-500'>Ya tienes una cuenta? <Link className='font-bold text-gray-500 hover:text-gray-700'>Inicia Sesion</Link></p>
-          <Link className='text-gray-500 hover:text-gray-700'>Olividé mi contraseña</Link>
+          <p className='text-gray-500 text-sm'>Ya tienes una cuenta? <Link to='/' className='font-bold text-gray-500 hover:text-gray-700'>Inicia Sesion</Link></p>
+          <Link to='/forgot-password' className='text-sm text-gray-500 hover:text-gray-700'>Olividé mi contraseña</Link>
         </nav>
       </div>
     </>
