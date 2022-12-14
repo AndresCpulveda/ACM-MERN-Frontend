@@ -1,4 +1,5 @@
 import { createContext, useEffect, useState } from "react";
+import {useNavigate} from 'react-router-dom'
 import sendAxios from "../../config/sendAxios";
 
 const AuthContext = createContext()
@@ -6,6 +7,8 @@ const AuthContext = createContext()
 function AuthProvider({children}) {
   const [auth, setAuth] = useState({})
   const [loading, setLoading] = useState(true)
+
+  const navigate = useNavigate()
 
   useEffect(() => {
     const authenticateUser = async () => {
@@ -32,12 +35,18 @@ function AuthProvider({children}) {
     authenticateUser()
   }, [])
 
+  const logOut = () => {
+    localStorage.removeItem('token')
+    navigate('/')
+  }
+
   return (
     <AuthContext.Provider
       value={{
         auth,
         setAuth,
         loading,
+        logOut,
       }}
     >
       {children}
