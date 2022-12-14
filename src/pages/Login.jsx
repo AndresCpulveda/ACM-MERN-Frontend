@@ -1,8 +1,9 @@
-import {useState} from 'react'
+import {useState, useEffect} from 'react'
 import { Link, useNavigate } from 'react-router-dom'
 import sendAxios from '../../config/sendAxios'
 
 import Alert from '../components/Alert'
+import useAuth from '../hooks/useAuth'
 
 function Login() {
   const navigate = useNavigate()
@@ -11,6 +12,8 @@ function Login() {
   const [password, setPassword] = useState('')
   const [alert, setAlert] = useState({})
 
+  const {setAuth} = useAuth();
+  
   const handleSubmit = async (e) => {
     e.preventDefault()
 
@@ -24,11 +27,13 @@ function Login() {
     try {
       const {data} = await sendAxios.post('administrators/', {email, password})
       localStorage.setItem('token', data.token)
+      setAuth(data)
       setAlert({msg: 'Autenticado exitosamente'})
       setTimeout(() => {
         navigate('/admin')
-      }, 2000);
+      }, 3000);
     } catch (error) {
+      console.log(error);
       setAlert({msg: error.response.data.msg, error: true})
     }
   }

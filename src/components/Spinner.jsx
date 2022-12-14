@@ -2,7 +2,7 @@ import React from 'react'
 
 import '../styles/Spinner.css'
 
-function Loading() {
+function Spinner() {
   return (
   <div className="sk-circle">
     <div className="sk-circle1 sk-child"></div>
@@ -21,4 +21,4 @@ function Loading() {
   )
 }
 
-export default Loading
+export default Spinner

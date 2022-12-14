@@ -3,7 +3,7 @@ import {useParams, Link} from 'react-router-dom'
 import sendAxios from '../../config/sendAxios';
 
 import Alert from '../components/Alert';
-import Loading from '../components/Loading';
+import Spinner from '../components/Spinner';
 
 function Confirm() {
 
@@ -32,7 +32,7 @@ function Confirm() {
     <>
     <div>Confirm</div>
     <div className='flex flex-col gap-8'>
-    {loading ? <Loading /> : <Alert alert={alert}/>}
+    {loading ? <Spinner /> : <Alert alert={alert}/>}
     {confirmed ? <Link to='/' className='text-gray-500 hover:text-gray-600 font-bold text-center'>Inicia Sesion</Link> : <Link to='/register' className='text-gray-500 hover:text-gray-600 font-bold text-center'>Registrarse </Link>}
     </div>
     </>
