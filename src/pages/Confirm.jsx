@@ -20,7 +20,6 @@ function Confirm() {
         setLoading(false)
         setAlert({msg: 'Cuenta confirmada exitosamente'})
       } catch (error) {
-        console.log(error);
         setAlert({msg: error.response.data.msg, error: true})
         setLoading(false)
       }
