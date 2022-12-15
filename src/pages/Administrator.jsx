@@ -1,23 +1,16 @@
-import {} from 'react'
+import {useEffect} from 'react'
+
+import RecordsList from '../components/RecordsList';
+import RecordsSearch from '../components/RecordsSearch';
 
 function Administrator() {
-
   return (
     <>
-      <div>
-        <ul>
-          <li>trabajo</li>
-          <li>trabajo</li>
-          <li>trabajo</li>
-          <li>trabajo</li>
-          <li>trabajo</li>
-          <li>trabajo</li>
-        </ul>
+      <div className='col-span-1'>
+        <RecordsSearch />
       </div>
-      <div>
-        <h1>Ultimos trabajos</h1>
-        <label>Buscar</label>
-        <input className='bg-gray-200'></input>
+      <div className='col-span-2 bg-gray-100'>
+        <RecordsList />
       </div>
     </>
   )

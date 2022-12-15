@@ -9,26 +9,29 @@ import Confirm from './pages/Confirm'
 import AdminLayout from './layouts/AdminLayout'
 import Administrator from './pages/Administrator'
 import { AuthProvider } from './context/AuthProvider'
+import { RecordsProvider } from './context/RecordsProvider'
 
 function App() {
   return (
     <>
       <BrowserRouter>
         <AuthProvider>
-          <Routes>
-            <Route path='/' element={<AuthLayout/>}>
-              <Route index element={<Login/>}/>
-              <Route path='register' element={<Register/>}/>
-              <Route path='confirm/:token' element={<Confirm/>}/>
-              <Route path='forgot-password' element={<ForgotPassword/>}/>
-              <Route path='forgot-password/:token' element={<RestorePassword/>}/>
-            </Route>
-            <Route path='/admin' element={<AdminLayout/>}>
-              <Route>
-                <Route index element={<Administrator/>}/>
+          <RecordsProvider>            
+            <Routes>
+              <Route path='/' element={<AuthLayout/>}>
+                <Route index element={<Login/>}/>
+                <Route path='register' element={<Register/>}/>
+                <Route path='confirm/:token' element={<Confirm/>}/>
+                <Route path='forgot-password' element={<ForgotPassword/>}/>
+                <Route path='forgot-password/:token' element={<RestorePassword/>}/>
               </Route>
-            </Route>
-          </Routes>
+              <Route path='/admin' element={<AdminLayout/>}>
+                <Route>
+                  <Route index element={<Administrator/>}/>
+                </Route>
+              </Route>
+            </Routes>
+          </RecordsProvider>
         </AuthProvider>
       </BrowserRouter>
     </>
