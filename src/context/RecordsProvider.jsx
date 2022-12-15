@@ -6,6 +6,7 @@ const RecordsContext = createContext()
 function RecordsProvider({children}) {
 
   const [lastRecords, setLastRecords] = useState([])
+  const [amount, setAmount] = useState(5)
 
   useEffect(() => {
     const getLastRecords = async () => {
@@ -18,19 +19,21 @@ function RecordsProvider({children}) {
         }
       }
       try {
-        const {data} = await sendAxios.post('clients/last-records', {amount: 2}, config )
+        const {data} = await sendAxios.post('clients/last-records', {amount: amount}, config )
         setLastRecords(data)
       } catch (error) {
         console.log(error);
       }
     }
     getLastRecords();
-  }, [])
+  }, [amount])
 
   return (
     <RecordsContext.Provider
       value={{
         lastRecords,
+        amount,
+        setAmount,
       }}
     >
       {children}

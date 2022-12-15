@@ -6,10 +6,10 @@ import RecordsSearch from '../components/RecordsSearch';
 function Administrator() {
   return (
     <>
-      <div className='col-span-1'>
+      <div className='col-span-1 w-2/5'>
         <RecordsSearch />
       </div>
-      <div className='col-span-2 bg-gray-100'>
+      <div className='col-span-2 w-3/5'>
         <RecordsList />
       </div>
     </>

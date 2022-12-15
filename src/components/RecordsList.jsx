@@ -4,10 +4,11 @@ import useRecords from '../hooks/useRecords'
 import Record from '../components/Record';
 
 function RecordsList() {
-  const {lastRecords} = useRecords()
+  const {lastRecords, amount, setAmount} = useRecords()
   return (
     <>
-      <ul>
+      <label>Mostrando los ultimos: <input type='number' className='p-1 rounded' value={amount}  onChange={e => setAmount(e.target.value)}></input> trabajos</label>
+      <ul className='my-8 overflow-scroll h-[28rem]'>
         {lastRecords.map(record => (<Record record={record} key={record._id}/>))}
       </ul>
     </>
