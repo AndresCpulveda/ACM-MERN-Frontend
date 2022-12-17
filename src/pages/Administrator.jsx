@@ -7,8 +7,14 @@ import Spinner from '../components/Spinner'
 
 
 function Administrator() {
-  const {loadingRecords, lastRecords} = useRecords();
+
+  const {getLastRecords, loadingRecords, lastRecords} = useRecords();
+
+  useEffect(() => {
+    getLastRecords()
+  }, [])
   if(loadingRecords) return <Spinner />
+
   return (
     <>
       <div className='col-span-1 w-2/5'>

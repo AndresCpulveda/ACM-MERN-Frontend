@@ -13,7 +13,10 @@ function RecordsList() {
           className='p-1 rounded'
           value={amount}
           onChange={e => {
-            setAmount(e.target.value)
+            if(e.target.value !== '0') {
+              console.log(e.target.value)
+              setAmount(e.target.value)
+            }
           }}
 
         ></input> trabajos</label>
