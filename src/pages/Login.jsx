@@ -35,6 +35,9 @@ function Login() {
     } catch (error) {
       console.log(error);
       setAlert({msg: error.response.data.msg, error: true})
+      setTimeout(() => {
+        setAlert({})
+      }, 4000);
     }
   }
   return (
