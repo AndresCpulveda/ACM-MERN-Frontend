@@ -4,8 +4,11 @@ import Alert from './Alert'
 import useRecords from '../hooks/useRecords'
 
 function AddRecord() {
-  const [newRecord, setNewRecord] = useState({})
+  const [client, setClient] = useState('')
   const [plate, setPlate] = useState('')
+  const [date, setDate] = useState('')
+  const [repair, setRepair] = useState('')
+  const [charge, setCharge] = useState('')
   const [alert, setAlert] = useState({})
 
   const {addRecord} = useRecords();
@@ -21,19 +24,25 @@ function AddRecord() {
         setPlate(value)
       }
     }
-    setNewRecord({
-      ...newRecord,
-      plate: plate
-    })
   }
 
   const handleSubmit = async(e) => {
     e.preventDefault()
 
+    const newRecord = {
+      client,
+      plate,
+      date,
+      repair,
+      charge
+    }
+
     try {
-      console.log(newRecord);
       const response = await addRecord(newRecord)
       setAlert(response)
+      setTimeout(() => {
+        setAlert({})
+      }, 3000);
     } catch (error) {
       console.log(error);
     }
@@ -46,11 +55,8 @@ function AddRecord() {
             <label className='text-lime-900 uppercase font-bold'>Cliente</label>
             <input
               name='client'
-              value={newRecord.client || ''}
-              onChange={e => setNewRecord({
-                ...newRecord,
-                [e.target.name] : e.target.value
-              })}
+              value={client}
+              onChange={e => setClient(e.target.value)}
               required
               className='bg-gray-200 rounded px-2 py-1'
             ></input>
@@ -58,7 +64,7 @@ function AddRecord() {
           <div className='flex flex-col mb-4'>
             <label className='text-lime-900 uppercase font-bold'>Placa</label>
             <input
-              value={plate || ''}
+              value={plate}
               onChange={handlePlate}
               required
               className='bg-gray-200 rounded px-2 py-1'
@@ -68,11 +74,8 @@ function AddRecord() {
             <label className='text-lime-900 uppercase font-bold'>Fecha</label>
             <input
               name='date'
-              value={newRecord.date || ''}
-              onChange={e => setNewRecord({
-                ...newRecord,
-                [e.target.name] : e.target.value
-              })}
+              value={date}
+              onChange={e => setDate(e.target.value)}
               type='date'
               className='bg-gray-200 rounded px-2 py-1'
             ></input>
@@ -81,11 +84,8 @@ function AddRecord() {
             <label className='text-lime-900 uppercase font-bold'>Arreglo</label>
             <input
               name='repair'
-              value={newRecord.repair || ''}
-              onChange={e => setNewRecord({
-                ...newRecord,
-                [e.target.name] : e.target.value
-              })}
+              value={repair}
+              onChange={e => setRepair(e.target.value)}
               required
               className='bg-gray-200 rounded px-2 py-1'
             ></input>
@@ -95,11 +95,8 @@ function AddRecord() {
             <input
               type='number'
               name='charge'
-              value={newRecord.charge || ''}
-              onChange={e => setNewRecord({
-                ...newRecord,
-                [e.target.name] : parseInt(e.target.value)
-              })}
+              value={charge}
+              onChange={e => setCharge(parseInt(e.target.value))}
               required
               className='bg-gray-200 rounded px-2 py-1'
             ></input>
