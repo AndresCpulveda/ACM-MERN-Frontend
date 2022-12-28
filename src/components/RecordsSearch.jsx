@@ -8,7 +8,7 @@ function RecordsSearch() {
   const [search, setSearch] = useState('')
   const [alert, setAlert] = useState({})
 
-  const {searchByPlate} = useRecords();
+  const {searchByPlate, searchByClient} = useRecords();
 
   const handleChange = (e) => {
     if(searchBy === '') {
@@ -44,16 +44,24 @@ function RecordsSearch() {
       }, 3000);
       return
     }
-    if(searchBy === '') {
-      setAlert({msg: 'Elige que quieres buscar', error: true})
-      setTimeout(() => {
-        setAlert({})
-      }, 3000);
-      return
-    }
+    // if(searchBy === '') {
+    //   setAlert({msg: 'Elige que quieres buscar', error: true})
+    //   setTimeout(() => {
+    //     setAlert({})
+    //   }, 3000);
+    //   return
+    // }
     
     if(searchBy === 'plate') {
       const response = await searchByPlate(search)
+      setAlert(response)
+      setTimeout(() => {
+        setAlert({})
+      }, 3000);
+    }
+    
+    if(searchBy === 'client') {
+      const response = await searchByClient(search)
       setAlert(response)
       setTimeout(() => {
         setAlert({})

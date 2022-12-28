@@ -54,6 +54,27 @@ function RecordsProvider({children}) {
       return {msg: error.response.data.msg, error: true}
     }
   }
+
+  const searchByClient = async (name) => {
+    const token = localStorage.getItem('token')
+    if(!token) {
+      console.log('no hay token');
+      return
+    }
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    }
+    try {
+      const {data} = await sendAxios.post('clients/search-name', {name}, config )
+      setLastRecords(data)
+      return {msg: 'Mostrando resultados'}
+    } catch (error) {
+      return {msg: error.response.data.msg, error: true}
+    }
+  }
   
   const addRecord = async(record) => {
     const token = localStorage.getItem('token')
@@ -108,6 +129,7 @@ function RecordsProvider({children}) {
         amount,
         setAmount,
         searchByPlate,
+        searchByClient,
         addRecord,
         deleteRecord,
       }}
