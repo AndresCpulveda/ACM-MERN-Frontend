@@ -27,13 +27,33 @@ function RecordsProvider({children}) {
     }
     try {
       const {data} = await sendAxios.post('clients/last-records', {amount: amount || 5}, config )
-      console.log(data);
       setLastRecords(data, ...lastRecords)
       setLoadingRecords(false)
     } catch (error) {
       console.log('error');
     }
-  }  
+  }
+  
+  const searchByPlate = async (plate) => {
+    const token = localStorage.getItem('token')
+    if(!token) {
+      console.log('no hay token');
+      return
+    }
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    }
+    try {
+      const {data} = await sendAxios.post('clients/search-plate', {plate}, config )
+      setLastRecords(data)
+      return {msg: 'Mostrando resultados'}
+    } catch (error) {
+      return {msg: error.response.data.msg, error: true}
+    }
+  }
 
   return (
     <RecordsContext.Provider
@@ -43,6 +63,7 @@ function RecordsProvider({children}) {
         lastRecords,
         amount,
         setAmount,
+        searchByPlate,
       }}
     >
       {children}

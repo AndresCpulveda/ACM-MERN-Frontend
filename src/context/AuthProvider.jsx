@@ -29,6 +29,7 @@ function AuthProvider({children}) {
         setLoading(false)
       } catch (error) {
         console.log(error);
+        navigate('/')
       }
       
     }

@@ -14,7 +14,6 @@ function RecordsList() {
           value={amount}
           onChange={e => {
             if(e.target.value !== '0') {
-              console.log(e.target.value)
               setAmount(e.target.value)
             }
           }}
