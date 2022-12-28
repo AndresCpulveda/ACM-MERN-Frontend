@@ -4,13 +4,16 @@ import useRecords from '../hooks/useRecords'
 import Record from '../components/Record';
 
 function RecordsList() {
-  const {lastRecords, amount, setAmount} = useRecords()
+  const {getLastRecords, lastRecords, amount, setAmount} = useRecords()
   return (
     <>
-      <label>Mostrando los ultimos: 
+      <button
+        onClick={getLastRecords}
+        className='border border-orange-700 bg-orange-700 hover:bg-white hover:text-orange-700 text-white rounded font-bold px-1'
+      >Mostrar</button><label> los ultimos: 
         <input
           type='number'
-          className='p-1 rounded'
+          className='p-1 rounded w-[55px]'
           value={amount}
           onChange={e => {
             if(e.target.value !== '0') {

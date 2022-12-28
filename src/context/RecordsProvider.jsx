@@ -54,6 +54,50 @@ function RecordsProvider({children}) {
       return {msg: error.response.data.msg, error: true}
     }
   }
+  
+  const addRecord = async(record) => {
+    const token = localStorage.getItem('token')
+    if(!token) {
+      console.log('no hay token');
+      return
+    }
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    }
+    try {
+      const {data} = await sendAxios.post('clients', record, config )
+      setLastRecords([...lastRecords, data])
+      return {msg: 'Registro agregado'}
+    } catch (error) {
+      console.log(error);
+      return {msg: error.response.data.msg, error: true}
+    }
+  }
+  
+  const deleteRecord = async (record) => {
+    const token = localStorage.getItem('token')
+    if(!token) {
+      console.log('no hay token');
+      return
+    }
+    const config = {
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: `Bearer ${token}`
+      }
+    }
+    try {
+      await sendAxios.delete(`clients/${record._id}`, config )
+      const newRecords = lastRecords.filter( item => item._id !== record._id)
+      setLastRecords(newRecords)
+    } catch (error) {
+      console.log(error);
+      return {msg: error.response.data.msg, error: true}
+    }
+  }
 
   return (
     <RecordsContext.Provider
@@ -64,6 +108,8 @@ function RecordsProvider({children}) {
         amount,
         setAmount,
         searchByPlate,
+        addRecord,
+        deleteRecord,
       }}
     >
       {children}

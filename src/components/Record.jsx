@@ -1,7 +1,9 @@
 import React from 'react'
 
+import useRecords from '../hooks/useRecords'
 
 function Record({record}) {
+  const {deleteRecord} = useRecords();
   return (
     <li>
       <div className='flex justify-between bg-white shadow-lg rounded-lg p-4 mb-4'>
@@ -14,7 +16,7 @@ function Record({record}) {
         </ul>
         <div className='self-center gap-8 mr-12'>
           <button className='border-2 border-lime-700 bg-lime-700 hover:bg-white text-white hover:text-lime-700 text-sm uppercase font-bold rounded p-2 m-6 transition-all'>Editar</button>
-          <button className='border-2 border-red-700 bg-red-700 hover:bg-white text-white hover:text-red-700 text-sm uppercase font-bold rounded p-2 m-6 transition-all'>Borrar</button>
+          <button onClick={e => deleteRecord(record)} className='border-2 border-red-700 bg-red-700 hover:bg-white text-white hover:text-red-700 text-sm uppercase font-bold rounded p-2 m-6 transition-all'>Borrar</button>
         </div>
       </div>
     </li>
