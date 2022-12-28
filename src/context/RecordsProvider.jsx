@@ -69,7 +69,7 @@ function RecordsProvider({children}) {
     }
     try {
       const {data} = await sendAxios.post('clients', record, config )
-      setLastRecords([...lastRecords, data])
+      setLastRecords([data, ...lastRecords])
       return {msg: 'Registro agregado'}
     } catch (error) {
       console.log(error);

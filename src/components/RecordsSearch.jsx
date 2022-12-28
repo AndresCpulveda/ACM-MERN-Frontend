@@ -89,12 +89,14 @@ function RecordsSearch() {
           placeholder='Escribe aquí'
           className='rounded px-4 py-2 mt-4 bg-gray-200'
         ></input>
-        <input 
-          className='border-2 border-orange-700 bg-orange-700 hover:bg-white text-white hover:text-orange-700 uppercase font-bold p-2 rounded mt-4 cursor-pointer transition-all'
-          type='submit'
-          value='buscar'
-        ></input>
-        {alert.msg ? <Alert alert={alert} /> : null}
+        {alert.msg ?
+          <Alert alert={alert} /> :
+          <input 
+            className='border-2 border-orange-700 bg-orange-700 hover:bg-white text-white hover:text-orange-700 uppercase font-bold p-2 rounded mt-4 cursor-pointer transition-all'
+            type='submit'
+            value='buscar'
+          ></input>
+        }
       </div>
     </form>
     </>

@@ -101,13 +101,15 @@ function AddRecord() {
               className='bg-gray-200 rounded px-2 py-1'
             ></input>
           </div>
-          <input
-          type='submit'
-          value='agregar'
-          className='border-2 border-orange-700 bg-orange-700 hover:bg-white text-white hover:text-orange-700 uppercase font-bold p-2 rounded w-full cursor-pointer transition-all'
-          ></input>
+          {alert.msg ?
+            <Alert alert={alert} /> :
+            <input
+              type='submit'
+              value='agregar'
+              className='border-2 border-orange-700 bg-orange-700 hover:bg-white text-white hover:text-orange-700 uppercase font-bold p-2 rounded w-full cursor-pointer transition-all'
+            ></input>
+          }
         </form>
-        {alert.msg ? <Alert alert={alert} /> : null}
       </div>
     </>
   )

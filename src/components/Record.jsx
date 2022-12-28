@@ -15,8 +15,17 @@ function Record({record}) {
           <li className='text-orange-700 font-bold'>Precio: <span className='text-lime-900 font-normal'>${record.charge}</span></li>
         </ul>
         <div className='self-center gap-8 mr-12'>
-          <button className='border-2 border-lime-700 bg-lime-700 hover:bg-white text-white hover:text-lime-700 text-sm uppercase font-bold rounded p-2 m-6 transition-all'>Editar</button>
-          <button onClick={e => deleteRecord(record)} className='border-2 border-red-700 bg-red-700 hover:bg-white text-white hover:text-red-700 text-sm uppercase font-bold rounded p-2 m-6 transition-all'>Borrar</button>
+          <button
+            className='border-2 border-lime-700 bg-lime-700 hover:bg-white text-white hover:text-lime-700 text-sm uppercase font-bold rounded p-2 m-6 transition-all'
+          >Editar</button>
+          <button
+            onClick={() => {
+              if(confirm('¿Seguro que quieres borrar este registro?')) {
+                deleteRecord(record)
+              }
+            }}
+            className='border-2 border-red-700 bg-red-700 hover:bg-white text-white hover:text-red-700 text-sm uppercase font-bold rounded p-2 m-6 transition-all'
+          >Borrar</button>
         </div>
       </div>
     </li>
