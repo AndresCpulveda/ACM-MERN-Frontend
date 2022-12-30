@@ -27,6 +27,7 @@ function RecordsProvider({children}) {
     }
     try {
       const {data} = await sendAxios.post('clients/last-records', {amount: amount || 5}, config )
+      console.log(data);
       setLastRecords(data, ...lastRecords)
       setLoadingRecords(false)
     } catch (error) {
@@ -68,7 +69,7 @@ function RecordsProvider({children}) {
       }
     }
     try {
-      const {data} = await sendAxios.post('clients/search-name', {name}, config )
+      const {data} = await sendAxios.post('clients/search-name', {name : name.toLowerCase()}, config )
       setLastRecords(data)
       return {msg: 'Mostrando resultados'}
     } catch (error) {
@@ -89,7 +90,7 @@ function RecordsProvider({children}) {
       }
     }
     try {
-      const {data} = await sendAxios.post('clients/search-repair', {repair}, config )
+      const {data} = await sendAxios.post('clients/search-repair', {repair : repair.toLowerCase()}, config )
       setLastRecords(data)
       return {msg: 'Mostrando resultados'}
     } catch (error) {

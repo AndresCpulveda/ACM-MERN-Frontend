@@ -40,6 +40,11 @@ function AddRecord() {
     try {
       const response = await addRecord(newRecord)
       setAlert(response)
+      setCharge('')
+      setClient('')
+      setDate('')
+      setPlate('')
+      setRepair('')
       setTimeout(() => {
         setAlert({})
       }, 3000);
