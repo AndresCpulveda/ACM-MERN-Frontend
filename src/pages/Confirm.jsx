@@ -15,7 +15,7 @@ function Confirm() {
   useEffect(() => {
     const confirmAccount = async () => {
       try {
-        await sendAxios(`http://localhost:4000/api/administrators/confirm/${token}`)  
+        await sendAxios(`administrators/confirm/${token}`)  
         setConfirmed(true)
         setLoading(false)
         setAlert({msg: 'Cuenta confirmada exitosamente'})
