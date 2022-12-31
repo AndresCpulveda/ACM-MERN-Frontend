@@ -27,7 +27,6 @@ function RecordsProvider({children}) {
     }
     try {
       const {data} = await sendAxios.post('clients/last-records', {amount: amount || 5}, config )
-      console.log(data);
       setLastRecords(data, ...lastRecords)
       setLoadingRecords(false)
     } catch (error) {
