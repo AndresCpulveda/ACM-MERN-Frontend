@@ -30,6 +30,7 @@ function RecordsProvider({children}) {
       setLastRecords(data, ...lastRecords)
       setLoadingRecords(false)
     } catch (error) {
+      console.log(error);
       console.log('error');
     }
   }
