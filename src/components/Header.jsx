@@ -10,7 +10,7 @@ function Header() {
       <h1>Imagen</h1>
       <ul className='flex gap-8'>
         <li className='text-lime-700 hover:text-lime-800 uppercase font-bold cursor-pointer'><Link to='/admin' >trabajos</Link></li>
-        <li className='text-lime-700 hover:text-lime-800 uppercase font-bold cursor-pointer'><Link to=''>perfil</Link></li>
+        <li className='text-lime-700 hover:text-lime-800 uppercase font-bold cursor-pointer'><Link to='profile'>perfil</Link></li>
         <li className='text-lime-700 hover:text-lime-800 uppercase font-bold cursor-pointer' onClick={() => {confirm('¿Deseas cerrar sesion y salir?') ? logOut() : null}}>cerrar sesion</li>
       </ul>
     </nav>

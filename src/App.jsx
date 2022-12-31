@@ -8,6 +8,7 @@ import RestorePassword from './pages/RestorePassword'
 import Confirm from './pages/Confirm'
 import AdminLayout from './layouts/AdminLayout'
 import Administrator from './pages/Administrator'
+import Profile from './pages/Profile'
 import { AuthProvider } from './context/AuthProvider'
 import { RecordsProvider } from './context/RecordsProvider'
 
@@ -28,6 +29,7 @@ function App() {
               <Route path='/admin' element={<AdminLayout/>}>
                 <Route>
                   <Route index element={<Administrator/>}/>
+                  <Route path='profile' element={<Profile/>}/>
                 </Route>
               </Route>
             </Routes>
