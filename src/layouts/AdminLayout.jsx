@@ -13,7 +13,7 @@ function AdminLayout() {
     <>
       <Header />
       {auth._id ? (
-        <main className='container flex mx-auto px-8 pt-24 gap-12 items-center'>
+        <main className='container flex flex-col md:flex-row mx-auto px-8 pt-24 gap-12 items-center'>
           <Outlet />
         </main>
       ) : <Navigate to='/'/>}

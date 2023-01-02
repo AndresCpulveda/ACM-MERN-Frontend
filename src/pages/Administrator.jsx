@@ -19,12 +19,12 @@ function Administrator() {
 
   return (
     <>
-      <div className='w-2/5 flex flex-col'>
-        <h1 className='text-5xl text-center text-lime-800 font-bold uppercase'>Registros</h1>
+      <div className='lg:w-2/5 flex flex-col'>
+        <h1 className='text-3xl lg:text-5xl text-center mt-4 text-lime-800 font-bold uppercase'>Registros</h1>
         <div className='flex justify-around my-8'>
           <button
             onClick={e => {setAddActive(false)}}
-            className={`${addActive ? 'bg-orange-700 text-white' : 'bg-white text-orange-700' } border-2 border-orange-700 hover:bg-white text-white hover:text-orange-700 uppercase font-bold p-2 rounded transition-all`}
+            className={`${addActive ? 'bg-orange-700 text-white' : 'bg-white text-orange-700' } border-2 border-orange-700 hover:bg-white text-white hover:text-orange-700 uppercase font-bold p-0 lg:p-2 rounded transition-all`}
           >{addActive ? 'buscar' : 'buscando'}</button>
           <button
             onClick={e => {setAddActive(true)}}
@@ -33,7 +33,7 @@ function Administrator() {
         </div>
         {addActive ? <AddRecord /> : <RecordsSearch />}
       </div>
-      <div className='w-3/5'>
+      <div className='lg:w-3/5'>
         <RecordsList />
       </div>
     </>
