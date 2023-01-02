@@ -3,7 +3,7 @@ import React from 'react'
 function Profile() {
   return (
     <>
-      <div className='flex flex-col container w-1/2 mx-auto items-center bg-white shadow-lg rounded-lg p-8'>
+      <div className='flex flex-col container lg:w-1/2 mx-auto items-center bg-white shadow-lg rounded-lg p-8'>
         <h1 className='text-4xl font-bold uppercase text-lime-800 my-8'>perfil</h1>
         <form>
           <div className='mb-4'>
